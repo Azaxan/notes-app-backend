@@ -11,6 +11,18 @@ namespace notes_app_backend.Services
         {
             _context = context;
         }
+
+        public Note Get(int id)
+        {
+            return _context.Notes.First(n => n.Id == id);
+        }
+
+        public List<Note> GetAll()
+        {
+            var notes = _context.Notes.ToList();
+            return notes;
+        }
+
         public void AddNote(NoteDto request)
         {
             var note = new Note
